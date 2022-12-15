@@ -1,0 +1,49 @@
+body{
+   font-family: sans-serif;
+   text-align: center;
+   color: #0E0533;
+   background-color:#C4CBD9;
+   
+ }
+ 
+ fieldset{
+   width: 350px;
+   padding: 2rem;
+   border: 0px;
+   border-radius:8px;
+   background-color: #DDE3F3;
+ }
+ 
+ 
+ .card1{
+   padding: 30px 40px 10px 40px;
+   margin: auto;
+   margin-top: 16px;
+   width: 80%;
+   background:#fff;
+   border-radius:8px;  
+ }
+ 
+ .card2{
+   padding: 30px 40px 10px 40px;
+   margin: auto;
+   margin-top: 16px;
+   width: 80%;
+   background:#fff;
+   border-radius:8px;  
+ }
+
+ .data{
+   font-size: 24px;
+   font-weight: bold;
+ }
+
+ .nombre{
+   font-size: 24px;
+   font-weight: bold;
+   
+ }
+
+ label{
+   color:   #9591A5;
+ }
