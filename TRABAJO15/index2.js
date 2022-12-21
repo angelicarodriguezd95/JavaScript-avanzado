@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port=300;
+const port=3001;
 
 
 app.get('/', (req, res) => {
@@ -9,6 +9,6 @@ app.get('/', (req, res) => {
 });
 
 
-app.listen(3000, () => {
+app.listen(3001, () => {
     console.log(`El servidor se está ejecutando en http://localhost:${port}/`);
   });
