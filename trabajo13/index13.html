@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="" href="./img/users.png" />
+    <meta name="description" content="Curso de JavaScript Avanzado" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de costos de alquiler de vehículos</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+<body>
+  <div ng-controller="facturacionController">
+    <p>Ingresa la distancia recorrida:</p>
+    <input type="number" ng-model="distanciaRecorrida" />
+    <button ng-click="factura = calcularFactura(distanciaRecorrida)">Calcular factura</button>
+    <p>La factura es: {{factura}}</p>
+  </div>
+
+  <script>
+    function facturacionController($scope) {
+      // Inicializa variables y funciones para la facturación
+      $scope.tarifaFija = 250;
+      $scope.tarifaKmExceso = 30;
+      $scope.tarifaKmExcesoMayor1000 = 20;
+      $scope.limiteKmExceso = 300;
+      $scope.limiteKmExcesoMayor1000 = 1000;
+      $scope.descuento = 0.1;
+      $scope.limiteDescuento = 500;
+
+      $scope.calcularFactura = function(distanciaRecorrida) {
+        var factura = $scope.tarifaFija;
+
+        if (distanciaRecorrida > $scope.limiteKmExceso) {
+          factura += ($scope.tarifaKmExceso * (distanciaRecorrida - $scope.limiteKmExceso));
+        }
+        if (distanciaRecorrida > $scope.limiteKmExcesoMayor1000) {
+          factura += ($scope.tarifaKmExcesoMayor1000 * (distanciaRecorrida - $scope.limiteKmExcesoMayor1000));
+        }
+        if (factura > $scope.limiteDescuento) {
+          factura -= (factura * $scope.descuento);
+        }
+        return factura;
+      }
+    }
+  </script>
+</body>
+</html>
