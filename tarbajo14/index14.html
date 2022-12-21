@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script>
+    var app = angular.module('salarioModule', []);
+
+    app.controller('salarioController', function($scope) {
+      // Inicializa variables y funciones para el cálculo del salario
+      $scope.descuentos = [
+        { rango: [-1, 500], descuento: 0 },
+        { rango: [501, 1000], descuento: 0.02 },
+        { rango: [1001, 4000], descuento: 0.08 },
+        { rango: [4001, 8000], descuento: 0.15 },
+        { rango: [8001, 10000], descuento: 0.21 },
+        { rango: [10001, Number.MAX_VALUE], descuento: 0.3 }
+      ];
+
+      $scope.calcularSalario = function(codigoEmpleado, horasTrabajadas, tarifaHora) {
+        var salario = horasTrabajadas * tarifaHora;
+        var descuento = 0;
+
+        for (var i = 0; i < $scope.descuentos.length; i++) {
+          if (salario >= $scope.descuentos[i].rango[0] && salario <= $scope.descuentos[i].rango[1]) {
+            descuento = $scope.descuentos[i].descuento;
+            break;
+          }
+        }
+
+        return salario - (salario * descuento);
+      }
+    });
+  </script>
+</head>
+<body ng-app="salarioModule">
+  <div ng-controller="salarioController">
+    <p>Ingresa el código del empleado:</p>
+    <input type="number" ng-model="codigoEmpleado" />
+    <p>Ingresa el número de horas trabajadas:</p>
+    <input type="number" ng-model="horasTrabajadas" />
+    <p>Ingresa la tarifa por hora:</p>
+    <input type="number" ng-model="tarifaHora" />
+    <button ng-click="salario = calcularSalario(codigoEmpleado, horasTrabajadas, tarifaHora)">Calcular salario</button>
+    <p>El salario básico es: {{salario}}</p>
+  </div>
+</body>
+</html>
