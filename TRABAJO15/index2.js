@@ -5,7 +5,7 @@ const port=3001;
 
 app.get('/', (req, res) => {
   const resultado = 1 + 1;
-  res.send(`La suma de 1+1 es: ${resultado}. ¡Hola! Bienvenido a mi sitio.`);
+  res.send(`La suma de 1+1 es: ${resultado}. ¡Hola! Bienvenido.`);
 });
 
 
